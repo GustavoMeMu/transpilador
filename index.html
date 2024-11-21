@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Java a JavaScript</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Contenedor de explicación -->
+        <div class="info-container">
+            <h3>Casos que traduce el programa:</h3>
+            <ul>
+                <li>  Convierte <code>int</code>, <code>String</code>, <code>float</code>, <code>double</code>  y <code>boolean</code> a <code>let</code>.</li>
+                <li> Convierte <code>System.out.println()</code> a <code>console.log()</code>.</li>
+                <li> Traduce <code>for</code></li>
+                <li> Traduce <code>else if</code></li>
+                <li> Traduce <code>try catch</code></li>
+                <li> Traduce <code>switch</code></li>
+                <li> Traduce <code>while</code></li>
+                <li> Traduce <code>Metodo</code></li>
+                <li> Traduce <code>array</code></li>
+            </ul>
+        </div>
+
+        <!-- Contenedor principal -->
+        <div class="container">
+            <h1>Traductor de Java a JavaScript</h1>
+            <textarea id="CodigoJava" placeholder="Ingresa tu código Java aquí..."></textarea>
+            <button id="pegarTexto">Pegar</button>
+            <button id="convertirCodigo">Convertir a JavaScript</button>
+            <h2>Resultado en JavaScript:</h2>
+            <pre id="ResultadoJS" class="output"></pre>
+            <button id="copiarTexto">Copiar</button>
+            <div id="alertaTexto" style="display: none;">Texto copiado al portapapeles.</div>
+            <button id="limpiarCampos">Limpiar Campos</button>
+        </div>
+    </div>
+    
+    <script src="./public/js/scriptoptimizado.js"></script>
+</body>
+</html>
