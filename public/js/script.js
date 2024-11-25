@@ -1,7 +1,3 @@
-document.getElementById('convertirCodigo').addEventListener('click', convertirCodigo);
-document.getElementById('pegarTexto').addEventListener('click', pegarTexto);
-document.getElementById('copiarTexto').addEventListener('click', copiarTexto);
-document.getElementById('limpiarCampos').addEventListener('click', limpiarCampos);
 // Función para convertir el código
 const convertirCodigo = () => {
     const codigoJava = document.getElementById('CodigoJava').value.trim();
@@ -25,7 +21,8 @@ const convertirCodigo = () => {
         // Imprimir en consola
         .replace(/System\.out\.println\((.*?)\);/g, 'console.log($1);')
         // Método main
-        .replace(/\bpublic static void main\(String\[\] args\)/g, 'function main()')
+        .replace(/\b(public static)?\s*(\w+)\s+(\w+)\(([^)]*)\)\s*\{([^}]*)\}/g, 'function $3($4) { $5 }')
+        .replace(/\b(private static)?\s*(\w+)\s+(\w+)\(([^)]*)\)\s*\{([^}]*)\}/g, 'function $3($4) { $5 }')
         // Arrays - Declaración con new
         .replace(/\b(int|float|double|boolean|String)\[\]\s+(\w+)\s*=\s*\{([^}]+)\};/g, 'let $2 = [$3];')
 
@@ -65,3 +62,8 @@ const limpiarCampos = () => {
     document.getElementById('ResultadoJS').textContent = '';
 };
 
+// Asignar eventos a los botones
+document.getElementById('convertirCodigo').addEventListener('click', convertirCodigo);
+document.getElementById('pegarTexto').addEventListener('click', pegarTexto);
+document.getElementById('copiarTexto').addEventListener('click', copiarTexto);
+document.getElementById('limpiarCampos').addEventListener('click', limpiarCampos);
