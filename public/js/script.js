@@ -1,3 +1,7 @@
+document.getElementById('convertirCodigo').addEventListener('click', convertirCodigo);
+document.getElementById('pegarTexto').addEventListener('click', pegarTexto);
+document.getElementById('copiarTexto').addEventListener('click', copiarTexto);
+document.getElementById('limpiarCampos').addEventListener('click', limpiarCampos);
 // Función para convertir el código
 const convertirCodigo = () => {
     const codigoJava = document.getElementById('CodigoJava').value.trim();
@@ -23,9 +27,8 @@ const convertirCodigo = () => {
         // Método main
         .replace(/\bpublic static void main\(String\[\] args\)/g, 'function main()')
         // Arrays - Declaración con new
-        .replace(/\b(int|float|double|boolean|String)\[\]\s+(\w+)\s*=\s*new\s+\1\[(\d+)\];/g, 'let $2 = new Array($3);')
-        // Arrays - Inicialización con valores
-        .replace(/\b(int|float|double|boolean|String)\[\]\s+(\w+)\s*=\s*\{([^\}]+)\};/g, 'let $2 = [$3];')
+        .replace(/\b(int|float|double|boolean|String)\[\]\s+(\w+)\s*=\s*\{([^}]+)\};/g, 'let $2 = [$3];')
+
         // Bucle for
         .replace(/for\s*\((.*?)\)/g, 'for ($1)');
 
@@ -62,8 +65,3 @@ const limpiarCampos = () => {
     document.getElementById('ResultadoJS').textContent = '';
 };
 
-// Asignar eventos a los botones
-document.getElementById('convertirCodigo').addEventListener('click', convertirCodigo);
-document.getElementById('pegarTexto').addEventListener('click', pegarTexto);
-document.getElementById('copiarTexto').addEventListener('click', copiarTexto);
-document.getElementById('limpiarCampos').addEventListener('click', limpiarCampos);
