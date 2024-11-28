@@ -25,7 +25,8 @@ const convertirCodigo = () => {
         .replace(/\b(private static)?\s*(\w+)\s+(\w+)\(([^)]*)\)\s*\{([^}]*)\}/g, 'function $3($4) { $5 }')
         // Arrays - Declaración con new
         .replace(/\b(int|float|double|boolean|String)\[\]\s+(\w+)\s*=\s*\{([^}]+)\};/g, 'let $2 = [$3];')
-
+        //validacion try catch
+        .replace(/try\s*\{([^}]*)\}\s*catch\s*\((\w+)\s+(\w+)\)\s*\{([^}]*)\}/g, 'try { $1 } catch ($3) { $4 }')
         // Bucle for
         .replace(/for\s*\((.*?)\)/g, 'for ($1)');
 

@@ -8,6 +8,7 @@ const convertirCodigo = () => {
         .replace(/\b(public static)?\s*(\w+)\s+(\w+)\(([^)]*)\)\s*\{([^}]*)\}/g, 'function $3($4) { $5 }')
         .replace(/\b(private static)?\s*(\w+)\s+(\w+)\(([^)]*)\)\s*\{([^}]*)\}/g, 'function $3($4) { $5 }')
         .replace(/\b(int|float|double|boolean|String)\[\]\s+(\w+)\s*=\s*\{([^}]+)\};/g, 'let $2 = [$3];')
+        .replace(/try\s*\{([^}]*)\}\s*catch\s*\((\w+)\s+(\w+)\)\s*\{([^}]*)\}/g, 'try { $1 } catch ($3) { $4 }')
         .replace(/for\s*\((.*?)\)/g, 'for ($1)');
     document.getElementById('ResultadoJS').textContent = codigoJS;
 };
